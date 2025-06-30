@@ -1,0 +1,49 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="KLXD15MrORGyaaByv1yn">
+    <mxGraphModel dx="1400" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-1" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.webicons.adobe_pdf;fillColor=#F40C0C;gradientColor=#610603" vertex="1" parent="1">
+          <mxGeometry x="120" y="480" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="280" y="240" width="1110" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-4" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Resource_Groups.svg;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="200" width="85" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-5" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/Azure_A.svg;" vertex="1" parent="1">
+          <mxGeometry x="810" y="190" width="80" height="75.43" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="370" y="664.5" width="520" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-6" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/Function_Apps.svg;" vertex="1" parent="1">
+          <mxGeometry x="340" y="640" width="68" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="900" y="310" width="380" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-8" value="reader agent" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/ai_machine_learning/AI_Studio.svg;" vertex="1" parent="1">
+          <mxGeometry x="946" y="350" width="64" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-10" value="requirements agent" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/ai_machine_learning/AI_Studio.svg;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="350" width="64" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-11" value="decision agent" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/ai_machine_learning/AI_Studio.svg;" vertex="1" parent="1">
+          <mxGeometry x="946" y="480" width="64" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-12" value="material agent" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/ai_machine_learning/AI_Studio.svg;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="480" width="64" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-14" value="doc file" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.checked_doc;" vertex="1" parent="1">
+          <mxGeometry x="760" y="709.5" width="70" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a3XSnAvGkDXMSHopQ4vu-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.479;entryY=0.014;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="a3XSnAvGkDXMSHopQ4vu-1" target="a3XSnAvGkDXMSHopQ4vu-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

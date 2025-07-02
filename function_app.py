@@ -1,58 +1,40 @@
-import azure.functions as func
 import logging
+import json
+import azure.functions as func
+from utils.doc_intell_main import extract_data_from_rfp
+from utils.req_main import process_requirements_extraction
+from utils.toc_main import process_toc_generation
+from utils.gen_main import process_proposal_generation
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
-
-@app.route(route="invoice-ai", methods=["POST"])
-def invoice_ai(req: func.HttpRequest) -> func.HttpResponse:
+@app.route(route="proposal", methods=["POST"])
+def proposal_agent(req: func.HttpRequest) -> func.HttpResponse:
     try:
         file = req.files.get("file")
         if not file:
             return func.HttpResponse("No file uploaded", status_code=400)
-        
+        filename = file.filename
         file_bytes = file.read()
 
-        full_text = ""
-        with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
-            for page in pdf.pages:
-                text = page.extract_text()
-                if text:
-                    full_text += text + "\n"
+        doc_intell_response = extract_data_from_rfp(file_bytes, filename)
+        parsed = json.loads(doc_intell_response)
+        full_text = parsed.get("content", "")
 
-        if not full_text.strip():
-            return func.HttpResponse("No text extracted from file", status_code=400)
-
-        extract_prompt = call_extract_prompt(full_text)
-        extract_response = call_extract_agent(extract_prompt)
-        logging.info(f"Extract response: {extract_response}")
-
-        try:
-            response_json = ast.literal_eval(extract_response["response"])
-            extracted_data = response_json[0]["text"]["value"]
-        except Exception as e:
-            logging.error(f"Error parsing extraction agent response: {str(e)}")
-            return func.HttpResponse(
-                "Invalid extraction agent response format",
-                status_code=400
-            )
-        
-        try:
-            result_json = json.loads(extracted_data)
-        except json.JSONDecodeError as e:
-            logging.error(f"JSON parsing error: {str(e)}")
-            return func.HttpResponse(
-                "Invalid JSON format in extracted data",
-                status_code=400
-            )
+        parsed_json = process_requirements_extraction(full_text)
+        toc_structured = process_toc_generation(parsed_json)
+        formatted_solutions = process_proposal_generation(parsed_json)
 
         return func.HttpResponse(
-            json.dumps(result_json),
+            json.dumps({
+                "agent_response": parsed_json,
+                "table_of_contents": toc_structured["table_of_contents"],
+                "generated_solutions": formatted_solutions
+            }, indent=2, ensure_ascii=False),
             status_code=200,
-            mimetype="application/json"
+            headers={"Content-Type": "application/json; charset=utf-8"}
         )
-
     except Exception as e:
-        logging.exception("Error processing invoice")
+        logging.exception(f"Agent processing failed: {str(e)}")
         return func.HttpResponse(
             f"Internal Server Error: {str(e)}",
             status_code=500

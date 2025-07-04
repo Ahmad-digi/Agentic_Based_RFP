@@ -2,13 +2,16 @@
 # The Python Worker is managed by Azure Functions platform
 # Manually managing azure-functions-worker may cause unexpected issues
 
-azure-functions
-azure-ai-documentintelligence
-azure-core
-azure-identity
-numpy
-python-dotenv
-azure-ai-projects
-pdfplumber
-streamlit 
-requests
+azure-functions  
+azure-ai-documentintelligence  
+azure-core  
+azure-identity  
+numpy  
+python-dotenv  
+azure-ai-projects  
+pdfplumber  
+streamlit  
+requests  
+python-docx
+markdown
+beautifulsoup4

@@ -1,11 +1,11 @@
 import json
 import ast
-from src.agents.toc_generated_agent import toc_generated_a
-from src.prompts.toc_generated_prompt import toc_generated_p
+from src.prompts.res_req_from_rfp_prompt import res_req_from_rfp_p
+from src.agents.get_res_req_from_rfp_agent import get_res_req_from_rfp_a
 
-def process_toc_generation(parsed_json):
-    toc_prompt = toc_generated_p(parsed_json)
-    toc_response = toc_generated_a(toc_prompt)
+def res_req_from_rfp_fun(parsed_json):
+    toc_prompt = res_req_from_rfp_p(parsed_json)
+    toc_response = get_res_req_from_rfp_a(toc_prompt)
     toc_json = toc_response["response"]
     toc_list = ast.literal_eval(toc_json)
     toc_str = toc_list[0]["text"]["value"]

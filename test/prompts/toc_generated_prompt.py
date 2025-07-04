@@ -1,7 +1,4 @@
 def toc_generated_p(extracted_data: dict) -> str:
-    """
-    Generate a prompt for the TOC generation agent based on extracted RFP data.
-    """
     return f"""
 You are a highly intelligent assistant skilled in analyzing RFP (Request for Proposal) documents and generating professional, structured outputs.
 Your task is to create a comprehensive Table of Contents (TOC) based on the provided extracted RFP content.

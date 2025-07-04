@@ -1,8 +1,8 @@
 import json
 import ast
 import re
-from src.agents.generated_content_agent import generated_content_a
-from src.prompts.generated_content_prompt import generated_content_p
+from test.prompts.generated_content_agent import generated_content_a
+from test.prompts.generated_content_prompt import generated_content_p
 
 def process_proposal_generation(parsed_json):
     proposal_prompt = generated_content_p(parsed_json)

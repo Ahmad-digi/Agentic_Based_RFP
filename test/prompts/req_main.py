@@ -1,7 +1,7 @@
 import json
 import ast
-from src.agents.requirements_gather_agent import requirements_gather_a
-from src.prompts.requirements_gather_prompt import requirements_gather_p
+from test.prompts.requirements_gather_agent import requirements_gather_a
+from test.prompts.requirements_gather_prompt import requirements_gather_p
 
 def process_requirements_extraction(full_text):
     extract_response = requirements_gather_a(requirements_gather_p(full_text))

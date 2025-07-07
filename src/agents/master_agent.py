@@ -6,9 +6,9 @@ from azure.ai.projects import AIProjectClient
 load_dotenv()
 
 AGENT_ENDPOINT = os.getenv('AZURE_PROJECT_ENDPOINT')
-AGENT_ID = os.getenv('AZURE_AGENT_ID_3')
+AGENT_ID = os.getenv('AZURE_AGENT_ID_2')
 
-def seq_pick_generate_a(prompt: str) -> dict:
+def master_a(prompt: str) -> dict:
     if not AGENT_ENDPOINT or not AGENT_ID:
         raise RuntimeError("Agent endpoint or ID not configured.")
 

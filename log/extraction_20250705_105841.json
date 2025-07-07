@@ -1,0 +1,37 @@
+{
+  "status": "no",
+  "rfp_headings": {
+    "3.12 Post-Implementation Support": {},
+    "4. Software Licenses": {},
+    "5. Timeline and Milestones": {}
+  },
+  "requirements": {
+    "Executive Summary": {
+      "description": "Summarize the key points of the proposal."
+    },
+    "Understanding Scope of Work": {
+      "description": "Explain your understanding of the scope of the work requested."
+    },
+    "Proposed Solution": {
+      "description": "Provide a detailed description of the proposed solution."
+    },
+    "Our Implementation Approach": {
+      "description": "Describe how you plan to implement the solution."
+    },
+    "Management Approach": {
+      "description": "Describe how the project will be managed."
+    },
+    "Training and Knowledge Transfer Approach": {
+      "description": "Explain how training and knowledge transfer will be conducted."
+    },
+    "Support Approach": {
+      "description": "Describe your support model post-implementation."
+    },
+    "Company Profile": {
+      "description": "Include information about your company's background and expertise."
+    },
+    "References": {
+      "description": "List relevant references or case studies."
+    }
+  }
+}

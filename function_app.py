@@ -1,16 +1,29 @@
 import logging
 import json
 import azure.functions as func
+from datetime import datetime
+import os
 
-from utils.doc_intell_main import extract_data_from_rfp
-from utils.res_req_yes_no_main import res_req_yes_no_fun
+from utils.document_intelligence_main import extract_data_from_rfp
 from utils.res_req_from_rfp_main import res_req_from_rfp_fun
-from utils.seq_pick_generate_main import seq_pick_generate_fun
+from utils.orchestrate_main import master_slave_solution_generation
+from utils.markdown_main import markdown_fun
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
+LOG_DIR = "log"
+os.makedirs(LOG_DIR, exist_ok=True)
+
+def save_json_to_log(data, prefix):
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"{prefix}_{timestamp}.json"
+    filepath = os.path.join(LOG_DIR, filename)
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    return filepath
+
 @app.route(route="proposal", methods=["POST"])
-def proposal_agent(req: func.HttpRequest) -> func.HttpResponse:
+def proposal_solutions_agent(req: func.HttpRequest) -> func.HttpResponse:
     try:
         # Step 0: Validate file upload
         file = req.files.get("file")
@@ -24,47 +37,52 @@ def proposal_agent(req: func.HttpRequest) -> func.HttpResponse:
         filename = file.filename
         file_bytes = file.read()
 
+        # Step 1: Extract text from file using Azure Document Intelligence
         extracted_data = extract_data_from_rfp(file_bytes, filename)
         parsed_data = json.loads(extracted_data)
+        logging.info("Step 1 complete: Document intelligence extraction done.")
 
-        requirements_data = res_req_from_rfp_fun(parsed_data)
-        requirements = requirements_data.get("requirements", {})
+        save_json_to_log(parsed_data, "docintell")
 
-        solutions = {}
-        for heading, req_data in requirements.items():
-            # Main section content
-            section_text = req_data.get("description", "")
-            section_solution = seq_pick_generate_fun(section_text)
+        # Step 2: Extract RFP headings and response requirements
+        extraction_result = res_req_from_rfp_fun(parsed_data)
+        status = extraction_result.get("status", "no")
+        rfp_headings = extraction_result.get("rfp_headings", {})
+        requirements = extraction_result.get("requirements", {})
+        logging.info("Step 2 complete: RFP headings and requirements extracted.")
 
-            solutions[heading] = {
-                "content": section_solution.get("content", ""),
-                "solution": section_solution.get("solution", "")
-            }
+        save_json_to_log(extraction_result, "extraction")
 
-            # Subsections
-            subsections = req_data.get("subsections", {})
-            if subsections:
-                solutions[heading]["subsections"] = {}
-                for sub_heading, sub_text in subsections.items():
-                    sub_solution = seq_pick_generate_fun(sub_text)
-                    solutions[heading]["subsections"][sub_heading] = {
-                        "content": sub_solution.get("content", ""),
-                        "solution": sub_solution.get("solution", "")
-                    }
+        # Step 3: Master-slave agent solution generation
+        solutions = master_slave_solution_generation(rfp_headings, requirements)
+        logging.info("Step 3 complete: Solutions generated.")
 
-        # Step 4: Return final combined response
+        save_json_to_log(solutions, "solutions")
+
+        # Step 4: Convert solutions to Markdown using another agent
+        markdown = markdown_fun(solutions, requirements)
+        logging.info("Step 4 complete: Markdown generated.")
+
+        save_json_to_log({"markdown": markdown}, "markdown")
+
+        # Step 5: Return JSON with all key pieces
+        response_body = {
+            "status": "success",
+            "rfp_status": status,
+            "rfp_headings": rfp_headings,
+            "requirements": requirements,
+            "solutions": solutions,
+            "markdown": markdown
+        }
+
         return func.HttpResponse(
-            json.dumps({
-                "status": "success",
-                "requirements": requirements,
-                "requirements_with_solutions": solutions
-            }, indent=2),
+            json.dumps(response_body, indent=2, ensure_ascii=False),
             status_code=200,
             mimetype="application/json"
         )
 
     except Exception as e:
-        logging.exception("Proposal agent processing failed.")
+        logging.exception("Proposal solutions agent processing failed.")
         return func.HttpResponse(
             json.dumps({
                 "status": "error",

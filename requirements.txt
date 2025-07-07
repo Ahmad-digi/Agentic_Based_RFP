@@ -15,3 +15,21 @@ requests
 python-docx
 markdown
 beautifulsoup4
+
+# src/agents/
+# get_res_req_from_rfp_agent.py
+# markdown_agent.py
+# master_agent.py
+# slave_1_agent.py
+# slave_2_agent.py
+# slave_3_agent.py
+# src/prompts/
+# markdown_prompt.py
+# master_prompt.py
+# res_req_from_rfp_prompt.py
+# slave_prompt.py
+# utils/
+# document_intelligence_main.py
+# res_req_from_rfp_main.py
+# orchestrate_main.py
+# function_app.py

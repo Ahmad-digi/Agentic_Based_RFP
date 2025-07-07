@@ -6,9 +6,9 @@ from azure.ai.projects import AIProjectClient
 load_dotenv()
 
 AGENT_ENDPOINT = os.getenv('AZURE_PROJECT_ENDPOINT')
-AGENT_ID = os.getenv('AZURE_AGENT_ID_1')
+AGENT_ID = os.getenv('AZURE_AGENT_ID_3')
 
-def get_res_req_from_rfp_a(prompt: str) -> dict:
+def slave_1_a(prompt: str) -> dict:
     if not AGENT_ENDPOINT or not AGENT_ID:
         raise RuntimeError("Agent endpoint or ID not configured.")
 

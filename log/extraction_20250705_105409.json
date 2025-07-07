@@ -1,0 +1,97 @@
+{
+  "status": "yes",
+  "rfp_headings": {
+    "1. Introduction": {},
+    "2. Objectives": {},
+    "3. Scope of Work and Deliverables": {
+      "3.1 Project Initiation and Requirements Gathering": {},
+      "3.2 Data Lake / Lakehouse Architecture Design": {},
+      "3.3 Infrastructure Setup on Azure": {},
+      "3.4 Data Ingestion and Integration": {},
+      "3.5 Data Quality and Validation": {},
+      "3.6 Data Storage and Management": {},
+      "3.7 Data Governance and Compliance": {},
+      "3.8 Analytics, Reporting and Machine Learning Models Platforms": {},
+      "3.9 Testing and Quality Assurance": {},
+      "3.10 User Training and Documentation": {},
+      "3.11 Deployment and Go-Live": {},
+      "3.12 Post-Implementation Support": {}
+    },
+    "4. Software Licenses": {},
+    "5. Timeline and Milestones:": {},
+    "6. Vendor Supplied Resources": {},
+    "7. Sidra Supplied Resources": {},
+    "8. Duration of the Agreement": {},
+    "9. Status Meetings and Reports": {},
+    "10. Pre-Live testing": {},
+    "11. Production use": {},
+    "12. Project Completion and Hand-Over": {},
+    "13. Warranty period for the software": {},
+    "14. Evaluation Criteria": {},
+    "15. RESPONSE REQUIREMENTS": {}
+  },
+  "requirements": {
+    "Company profile": {
+      "description": "• Provide past and present projects including client name, project region and industry, scope of implementation and support services, contract duration, contract value, and project references.\n· Achievements and Awards: Highlights of the company's accomplishments, such as awards received, industry recognition, or notable projects completed.\n· Overview of the company's organizational hierarchy, including key executives, departments, and reporting lines."
+    },
+    "Commercial and Financial Information": {
+      "description": "· Submit the last 3 years of audited financial statements and valid commercial registration status."
+    },
+    "Valid commercial registration": {
+      "description": ""
+    },
+    "Requirement delivery plan": {
+      "description": ". Address all functional and technical requirements outlined in the SOW.\n• Proposed architectural solution that seamlessly integrates with Sidra's existing infrastructure."
+    },
+    "Data Migration Plan": {
+      "description": "· Submit a high-level plan outlining the migration process, including phases, testing procedures, security measures, data cleansing and transformation methods, and validation procedures.\n. This response should address the requirements outlined in this SOW."
+    },
+    "Integration Plan": {
+      "description": "· Document support for integrations, ensuring compliance with security features, local healthcare industry standards, standard communication protocols, and scalability to cloud implementations.\n. This response should address the requirements outlined in this SOW."
+    },
+    "Security Management Plan": {
+      "description": "· Detail how the proposed solution complies with Sidra Medicine's security and privacy controls, including access control mechanisms, in addition to responses to the Cloud Security Questionnaire"
+    },
+    "Technical Proposal": {
+      "description": ""
+    },
+    "Training and Support Plan": {
+      "description": "· Include a technical support plan, service level agreement (SLA), training and knowledge transfer documentation, customization capabilities, and user community support resources.\nThis response should address the requirements outlined in this SOW."
+    },
+    "Warranty Coverage": {
+      "description": ". Discuss the extent of warranty coverage provided, including any exclusions."
+    },
+    "Project Plan with timelines (In gantt Chart/MS project), that includes the following activities": {
+      "subsections": {
+        "Phase": {
+          "Requirements Definition and Analysis": [
+            "- Stakeholder consultations and user interviews",
+            "- Document functional and non-functional requirements"
+          ],
+          "Design and Prototyping": [
+            "- Develop system architecture, user interfaces, and data migration plan",
+            "- Create prototypes and conduct proof of concept"
+          ],
+          "Development and Testing": [
+            "- Develop core system functionalities on sandbox environment",
+            "- Conduct unit testing and integration testing"
+          ],
+          "User Acceptance Testing (UAT)": [
+            "- Prepare test scenarios and conduct UAT sessions"
+          ],
+          "Deployment and Training": [
+            "- Prepare deployment plan and deploy system to production",
+            "- Conduct user training sessions"
+          ],
+          "Documentation and Knowledge Transfer": [
+            "- Update documentation and knowledge transfer materials",
+            "- Conduct knowledge transfer sessions with stakeholders and support teams"
+          ]
+        }
+      }
+    },
+    "OTHERS": {
+      "description": ". List of resources (and their cvs) that vendor will utilize/mobilize for the implementation of the project\n· CV of proposed project manager\n· Project organizational chart"
+    }
+  }
+}

@@ -60,7 +60,7 @@ def proposal_solutions_agent(req: func.HttpRequest) -> func.HttpResponse:
         save_json_to_log(solutions, "solutions")
 
         # Step 4: Convert solutions to Markdown using another agent
-        markdown = markdown_fun(solutions, requirements)
+        markdown = markdown_fun(solutions)
         logging.info("Step 4 complete: Markdown generated.")
 
         save_json_to_log({"markdown": markdown}, "markdown")

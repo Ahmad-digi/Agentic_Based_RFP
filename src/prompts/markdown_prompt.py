@@ -1,14 +1,18 @@
 import json
 
-def markdown_agent_prompt(solutions: dict, requirements: dict) -> str:
+def markdown_p(solutions: dict) -> str:
     return f"""
-You are a proposal formatting agent. Your task is to take the following solutions and requirements, and format them into a well-structured Markdown document. Use clear headings and bullet points for requirements.
+You are a proposal formatting agent. Your task is to take the following solutions and convert them into a clean, well-structured Markdown document.
 
-Solutions:
-{json.dumps(solutions, indent=2)}
+Instructions:
+- Use `##` for top-level headings (e.g., "1. Introduction", "2. Scope of Work")
+- Use `###` for subheadings, if any
+- Preserve all text formatting (bold, lists, line breaks)
+- Return only valid Markdown output. Do not return JSON or extra text.
 
-Requirements:
-{json.dumps(requirements, indent=2)}
+Here is the solutions dictionary (heading → content):
 
-Output only the Markdown document.
+{json.dumps(solutions, indent=2, ensure_ascii=False)}
+
+Return only the Markdown document.
 """

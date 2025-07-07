@@ -8,7 +8,7 @@ load_dotenv()
 AGENT_ENDPOINT = os.getenv('AZURE_PROJECT_ENDPOINT')
 AGENT_ID = os.getenv('AZURE_AGENT_ID_6')
 
-def master_a(prompt: str) -> dict:
+def markdown_a(prompt: str) -> dict:
     if not AGENT_ENDPOINT or not AGENT_ID:
         raise RuntimeError("Agent endpoint or ID not configured.")
 

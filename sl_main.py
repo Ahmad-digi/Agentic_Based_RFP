@@ -134,7 +134,7 @@ def process_rfp_file(file):
         st.error(f"Internal Server Error: {str(e)}")
 
 def main():
-    st.title("RFP Markdown Generator")
+    st.title("Agentic Based Proposal Generation")
     st.write("Upload a PDF file to generate Markdown output and download as DOCX.")
 
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")

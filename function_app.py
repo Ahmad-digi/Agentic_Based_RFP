@@ -11,16 +11,16 @@ from utils.markdown_main import markdown_fun
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
-LOG_DIR = "log"
-os.makedirs(LOG_DIR, exist_ok=True)
+# LOG_DIR = "log"
+# os.makedirs(LOG_DIR, exist_ok=True)
 
-def save_json_to_log(data, prefix):
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"{prefix}_{timestamp}.json"
-    filepath = os.path.join(LOG_DIR, filename)
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    return filepath
+# def save_json_to_log(data, prefix):
+#     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+#     filename = f"{prefix}_{timestamp}.json"
+#     filepath = os.path.join(LOG_DIR, filename)
+#     with open(filepath, "w", encoding="utf-8") as f:
+#         json.dump(data, f, indent=2, ensure_ascii=False)
+#     return filepath
 
 @app.route(route="proposal", methods=["POST"])
 def proposal_solutions_agent(req: func.HttpRequest) -> func.HttpResponse:
@@ -42,7 +42,7 @@ def proposal_solutions_agent(req: func.HttpRequest) -> func.HttpResponse:
         parsed_data = json.loads(extracted_data)
         logging.info("Step 1 complete: Document intelligence extraction done.")
 
-        save_json_to_log(parsed_data, "docintell")
+        # save_json_to_log(parsed_data, "docintell")
 
         # Step 2: Extract RFP headings and response requirements
         extraction_result = res_req_from_rfp_fun(parsed_data)
@@ -51,19 +51,19 @@ def proposal_solutions_agent(req: func.HttpRequest) -> func.HttpResponse:
         requirements = extraction_result.get("requirements", {})
         logging.info("Step 2 complete: RFP headings and requirements extracted.")
 
-        save_json_to_log(extraction_result, "extraction")
+        # save_json_to_log(extraction_result, "extraction")
 
         # Step 3: Master-slave agent solution generation
         solutions = master_slave_solution_generation(rfp_headings, requirements)
         logging.info("Step 3 complete: Solutions generated.")
 
-        save_json_to_log(solutions, "solutions")
+        # save_json_to_log(solutions, "solutions")
 
         # Step 4: Convert solutions to Markdown using another agent
         markdown = markdown_fun(solutions)
         logging.info("Step 4 complete: Markdown generated.")
 
-        save_json_to_log({"markdown": markdown}, "markdown")
+        # save_json_to_log({"markdown": markdown}, "markdown")
 
         # Step 5: Return JSON with all key pieces
         response_body = {
